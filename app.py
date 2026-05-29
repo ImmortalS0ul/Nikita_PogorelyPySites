@@ -3,7 +3,7 @@ from typing import Annotated
 import uvicorn
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, select
-
+import os
 from hashlib import sha256
 from uuid import uuid4
 from fastapi import FastAPI, Cookie, Request, Form
@@ -13,8 +13,10 @@ from model import Base, User, Book, SessionID
 
 app = FastAPI()
 html = Jinja2Templates(directory="html")
+TURSO_DATABASE_URL="libsql://database-aquamarine-sail-vercel-icfg-ddztiqeiypl3okbhp7byoaki.aws-us-east-1.turso.io"
+DATABASE_URL = os.environ.get(TURSO_DATABASE_URL)
 
-engine = create_engine("sqlite:///database.db")
+engine = create_engine(DATABASE_URL)
 Base.metadata.create_all(engine)
 
 
