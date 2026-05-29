@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Таблица</title>
+            <style>
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    background-color: #e6f2ff; /* Светло-голубой фон всей страницы */
+                    margin: 20px;
+                    padding: 20px;
+                    color: #333333;
+                    font-size: 16px;
+                }
+                
+                /* Стили для ссылок навигации */
+                a {
+                    color: #007bff;
+                    text-decoration: none;
+                    font-weight: bold;
+                    display: inline-block;
+                    margin: 5px 0;
+                }
+                a:hover {
+                    color: #0056b3;
+                    text-decoration: underline;
+                }
+
+                /* Стилизация кнопки "Форма" */
+                a[href="/form"] {
+                    background-color: #007bff;
+                    color: white;
+                    padding: 8px 16px;
+                    border-radius: 6px;
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                }
+                a[href="/form"]:hover {
+                    background-color: #0056b3;
+                    text-decoration: none;
+                }
+
+                /* Ссылка "Выйти" */
+                a[href="/logout"] {
+                    color: #dc3545;
+                }
+                a[href="/logout"]:hover {
+                    color: #bd2130;
+                }
+
+                /* Стили для голубой таблицы */
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    background-color: #ffffff;
+                    margin-top: 15px;
+                    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+                }
+                td, th {
+                    border: 1px solid #b3d7ff; /* Голубые границы вместо черных */
+                    padding: 12px;
+                    text-align: left;
+                }
+                th {
+                    background-color: #007bff; /* Синий фон для шапки */
+                    color: white;
+                }
+                tr:hover {
+                    background-color: #f0f7ff; /* Подсветка строк при наведении */
+                }
+
+                /* Красная ссылка "Удалить" внутри таблицы */
+                td a {
+                    color: #dc3545;
+                }
+                td a:hover {
+                    color: #bd2130;
+                }
+            </style>
+        </head>
+        <body>
+                    {% if user %}
+            Вы вошли как {{ user.login }}<br>
+                    <a href="/logout">Выйти</a>
+            {% else %}
+            Вы не вошли <br>
+            <a href="/login_form">Вход</a><br>
+            <a href="/reg_form">Регистрация</a>
+            {% endif %}
+
+        <a href="/form">Форма</a><br>
+        <table>
+            <tr>
+                <th>Название</th>
+                <th>Автор</th>
+                <th>Год выпуска</th>
+                <th>ссылка на книгу</th>
+            </tr>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.year }}</td>
+                <td><a href="/delete/{{ book.id }}">Удалить</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </body>
+        </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e6f2ff; /* Светло-голубой фон страницы */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px; /* Более округлые углы */
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.15); /* Нежная голубоватая тень */
+            width: 100%;
+            max-width: 320px;
+            border-top: 5px solid #007bff; /* Яркая синяя полоса сверху */
+        }
+        form br {
+            display: none; /* Скрываем старые <br>, отступы делаем через CSS */
+        }
+        input {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #b3d7ff; /* Голубая граница для полей */
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: #f8f9fa;
+        }
+        input:focus {
+            border-color: #007bff; /* Насыщенный синий при клике */
+            background-color: #ffffff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff; /* Голубая/синяя кнопка */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        button:hover {
+            background-color: #0056b3; /* Темно-синий при наведении */
+        }
+        button:active {
+            transform: scale(0.98); /* Эффект нажатия */
+        }
+    </style>
+</head>
+<body>
+<form action="/reg" method="post">
+    Логин: <input type="text" name="login" required><br>
+    Пароль: <input type="password" name="password" required><br>
+    Повторите пароль: <input type="password" name="password2" required><br>
+    <button type="submit">Зарегистрироваться</button>
+</form>
+</body>
+</html>

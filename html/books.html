@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.title }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e6f2ff; /* Светло-голубой фон страницы */
+            padding: 40px;
+            margin: 0;
+            color: #333333;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #0056b3;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 3px solid #007bff; /* Синяя полоса под заголовком */
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        b {
+            color: #0056b3; /* Насыщенный голубой акцент для жирного текста */
+        }
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background-color: #dc3545; /* Красный цвет для кнопки удаления */
+            color: white !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(220, 53, 69, 0.2);
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        a:hover {
+            background-color: #bd2130;
+        }
+        a:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+<div class="book-card">
+    <h1>{{ book.title }}</h1>
+    <p><b>Автор:</b> {{ book.author }}</p>
+    <p><b>Год выпуска:</b> {{ book.year }} год</p>
+    <p><b>ID книги:</b> {{ book.id }}</p>
+    <p><b>Добавил на сайт:</b> {{ added_by.login }}</p>
+
+    {% if is_admin %}
+        <a href="/delete?id={{ book.id }}" class="btn-delete">Удалить книгу</a>
+    {% endif %}
+</div>
+</body>
+</html>
