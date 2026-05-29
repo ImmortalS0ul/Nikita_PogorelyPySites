@@ -13,8 +13,8 @@ from model import Base, User, Book, SessionID
 
 app = FastAPI()
 html = Jinja2Templates(directory="html")
-TURSO_DATABASE_URL="libsql://database-aquamarine-sail-vercel-icfg-ddztiqeiypl3okbhp7byoaki.aws-us-east-1.turso.io"
-DATABASE_URL = os.environ.get(TURSO_DATABASE_URL)
+NDATABASE_URL=postgresql://neondb_owner:npg_VZuRle4yc3MY@ep-nameless-rice-apjhbeu1-pooler.c-7.us-east-1.aws.neon.tech/neondb?channel_binding=require&sslmode=require
+DATABASE_URL = os.environ.get(NDATABASE_URL)
 
 engine = create_engine(DATABASE_URL)
 Base.metadata.create_all(engine)
